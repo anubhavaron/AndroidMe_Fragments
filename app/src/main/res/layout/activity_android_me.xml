@@ -32,14 +32,33 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="165dp"
             android:id="@+id/head_container"
 
 
             >
 
         </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
 
+
+            android:id="@+id/body_container"
+            >
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+
+
+            android:id="@+id/leg_container"
+            >
+
+        </FrameLayout>
 
     </LinearLayout>
 
