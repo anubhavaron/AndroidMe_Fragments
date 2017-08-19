@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
@@ -23,6 +24,10 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class BodyPartsFragment extends Fragment {
     private List<Integer> mImageId;
+
+
+    public static final String IMAGE_TO_LIST="image_ids";
+    public static final String List_Index="list_index";
     private int mImageIndex;
     private static final String TAG="Body Part Fragment";
 
@@ -33,6 +38,12 @@ public class BodyPartsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        if(savedInstanceState!=null)
+        {
+            mImageId=savedInstanceState.getIntegerArrayList(IMAGE_TO_LIST);
+            mImageIndex=savedInstanceState.getInt(List_Index);
+        }
+
         View rootView=inflater.inflate(R.layout.fragment_bodt_parts,container,false);
         final ImageView imageView=(ImageView)rootView.findViewById(R.id.bodypart_imageview);
         if(mImageId!=null)
@@ -85,6 +96,15 @@ public class BodyPartsFragment extends Fragment {
     public void setindex(int index)
     {
         mImageIndex=index;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle currentState)
+    {
+        currentState.putIntegerArrayList(IMAGE_TO_LIST, (ArrayList<Integer>)mImageId);
+        currentState.putInt(List_Index,mImageIndex);
+
+
     }
 
 }

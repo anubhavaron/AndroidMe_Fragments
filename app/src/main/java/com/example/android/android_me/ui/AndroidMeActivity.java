@@ -30,27 +30,28 @@ public class AndroidMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
+        if(savedInstanceState==null) {
+
+            BodyPartsFragment headFragement = new BodyPartsFragment();
+            headFragement.setImageId(AndroidImageAssets.getHeads());
+            headFragement.setindex(1);
+
+            BodyPartsFragment bodyFragment = new BodyPartsFragment();
+            bodyFragment.setImageId(AndroidImageAssets.getBodies());
+            bodyFragment.setindex(1);
+            BodyPartsFragment LegFragment = new BodyPartsFragment();
+            LegFragment.setImageId(AndroidImageAssets.getLegs());
+            LegFragment.setindex(1);
 
 
-        BodyPartsFragment headFragement=new BodyPartsFragment();
-        headFragement.setImageId(AndroidImageAssets.getHeads());
-        headFragement.setindex(1);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.head_container, headFragement)
+                    .add(R.id.body_container, bodyFragment)
+                    .add(R.id.leg_container, LegFragment)
+                    .commit();
 
-        BodyPartsFragment bodyFragment=new BodyPartsFragment();
-        bodyFragment.setImageId(AndroidImageAssets.getBodies());
-        bodyFragment.setindex(1);
-        BodyPartsFragment LegFragment=new BodyPartsFragment();
-        LegFragment.setImageId(AndroidImageAssets.getLegs());
-        LegFragment.setindex(1);
-
-
-
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.head_container,headFragement)
-                .add(R.id.body_container,bodyFragment)
-                .add(R.id.leg_container,LegFragment)
-                .commit();
+        }
 
 
 
