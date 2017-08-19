@@ -34,7 +34,7 @@ public class BodyPartsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView=inflater.inflate(R.layout.fragment_bodt_parts,container,false);
-        ImageView imageView=(ImageView)rootView.findViewById(R.id.bodypart_imageview);
+        final ImageView imageView=(ImageView)rootView.findViewById(R.id.bodypart_imageview);
         if(mImageId!=null)
         {
             imageView.setImageResource(mImageId.get(mImageIndex));
@@ -44,6 +44,30 @@ public class BodyPartsFragment extends Fragment {
         {
             Log.v(TAG,"Fragment IDS are NULL");
         }
+        imageView.setOnClickListener(new  View.OnClickListener(){
+
+
+            @Override
+            public void onClick(View view)
+            {
+                if(mImageIndex<mImageId.size()-1)
+                {
+                    mImageIndex++;
+                }
+                else
+                {
+                    mImageIndex=0;
+                }
+
+                imageView.setImageResource(mImageId.get(mImageIndex));
+
+            }
+
+
+
+        });
+
+
 
 
 
