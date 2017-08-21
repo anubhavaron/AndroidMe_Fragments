@@ -2,6 +2,7 @@ package com.example.android.android_me.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.android.android_me.R;
 
@@ -9,7 +10,8 @@ import com.example.android.android_me.R;
  * Created by ANUBHAV on 8/22/2017.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MasterListFragment.OnImageClickListener {
+
 
 
     @Override
@@ -19,4 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(int position) {
+        Toast.makeText(this,"Position "+position,Toast.LENGTH_SHORT).show();
+    }
 }
